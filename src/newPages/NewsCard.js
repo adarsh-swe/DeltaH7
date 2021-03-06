@@ -14,11 +14,10 @@ const NewsCard = ({ thumbnail, title, description, url }) => {
       <CardImg top width="100%" src={thumbnail} alt="Card image cap" />
       <CardBody>
         <CardTitle tag="h5">{title}</CardTitle>
-        <CardText>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </CardText>
-        <Button>Button</Button>
+        <CardText>{description}</CardText>
+        <a href={url}>
+          <Button>Visit</Button>
+        </a>
       </CardBody>
     </Card>
   );
