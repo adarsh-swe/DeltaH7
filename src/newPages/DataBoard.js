@@ -2,6 +2,7 @@ import React, { useEffect, text } from 'react';
 import Page from 'newComponents/Page';
 import LineGraph from './LineGraph';
 import PercentBar from './PercentBar';
+import ProvSelector from 'newComponents/ProvSelector';
 const DataBoard = () => {
   useEffect(() => {
     // this is needed, because InfiniteCalendar forces window scroll
@@ -10,7 +11,9 @@ const DataBoard = () => {
   return (
     <Page className="DashboardPage" title="Dashboard">
       <PercentBar></PercentBar>
+      <ProvSelector />
       <LineGraph></LineGraph>
+      <ProvSelector />
     </Page>
   );
 };
