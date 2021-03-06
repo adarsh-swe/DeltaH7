@@ -7,7 +7,7 @@ import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
-const LineGraph = React.lazy(() => import('newPages/LineGraph'));
+const DataBoard = React.lazy(() => import('newPages/DataBoard'));
 const AlertPage = React.lazy(() => import('pages/AlertPage'));
 const AuthModalPage = React.lazy(() => import('pages/AuthModalPage'));
 const BadgePage = React.lazy(() => import('pages/BadgePage'));
@@ -54,7 +54,7 @@ class App extends React.Component {
 
             <MainLayout breakpoint={this.props.breakpoint}>
               <React.Suspense fallback={<PageSpinner />}>
-                <Route exact path="/" component={LineGraph} />
+                <Route exact path="/" component={DataBoard} />
                 {/*<Route exact path="/" component={DashboardPage} />
                 <Route exact path="/login-modal" component={AuthModalPage} />
                 <Route exact path="/buttons" component={ButtonPage} />
@@ -74,7 +74,7 @@ class App extends React.Component {
                 <Route exact path="/modals" component={ModalPage} />
                 <Route exact path="/forms" component={FormPage} />
                 <Route exact path="/input-groups" component={InputGroupPage} />
-              <Route exact path="/charts" component={ChartPage} />*/}
+                <Route exact path="/charts" component={ChartPage} />*/}
               </React.Suspense>
             </MainLayout>
             <Redirect to="/" />
