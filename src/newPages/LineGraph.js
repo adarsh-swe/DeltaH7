@@ -80,7 +80,7 @@ const chart = {
     },
   },
 };
-const LineGraph = () => {
+const LineGraph = ({ props }) => {
   useEffect(() => {
     // this is needed, because InfiniteCalendar forces window scroll
     window.scrollTo(0, 0);
