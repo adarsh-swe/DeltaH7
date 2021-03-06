@@ -18,7 +18,7 @@ import {
 } from 'reactstrap';
 
 const DataBoard = () => {
-  const [region, setRegion] = useState('CAN'); //based on code
+  const [region, setRegion] = useState('ON'); //based on code
   const regions = [
     'CAN',
     'ON',
@@ -42,42 +42,7 @@ const DataBoard = () => {
   return (
     <Page className="DashboardPage" title="Dashboard">
       <PercentBar></PercentBar>
-      <Row>
-        <Col md={2}>
-          <Card>
-            <CardBody>
-              <UncontrolledButtonDropdown>
-                <DropdownToggle
-                  caret
-                  color="#236842"
-                  className="text-capitalize m-1"
-                >
-                  Region
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem header>Select a Region</DropdownItem>
-                  {regions.map(x => {
-                    return region === x ? (
-                      <DropdownItem disabled onClick={() => setRegion(x)}>
-                        {x}
-                      </DropdownItem>
-                    ) : (
-                      <DropdownItem
-                        onClick={() => {
-                          setRegion(x);
-                        }}
-                      >
-                        {x}
-                      </DropdownItem>
-                    );
-                  })}
-                </DropdownMenu>
-              </UncontrolledButtonDropdown>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-      <LineGraph region={region}></LineGraph>
+      <LineGraph></LineGraph>
       <News />
     </Page>
   );
