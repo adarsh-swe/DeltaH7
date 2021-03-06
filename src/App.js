@@ -53,7 +53,7 @@ class App extends React.Component {
             />
 
             <MainLayout breakpoint={this.props.breakpoint}>
-              <React.Suspense fallback={<PageSpinner />}>
+              {/* <React.Suspense fallback={<PageSpinner />}>
                 <Route exact path="/" component={DashboardPage} />
                 <Route exact path="/login-modal" component={AuthModalPage} />
                 <Route exact path="/buttons" component={ButtonPage} />
@@ -74,7 +74,7 @@ class App extends React.Component {
                 <Route exact path="/forms" component={FormPage} />
                 <Route exact path="/input-groups" component={InputGroupPage} />
                 <Route exact path="/charts" component={ChartPage} />
-              </React.Suspense>
+              </React.Suspense> */}
             </MainLayout>
             <Redirect to="/" />
           </Switch>
