@@ -73,7 +73,7 @@ class MainLayout extends React.Component {
       case 'lg':
       case 'xl':
       default:
-        return this.openSidebar('open');
+        return this.openSidebar('close');
     }
   }
 
