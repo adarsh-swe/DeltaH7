@@ -57,7 +57,7 @@ const DataBoard = () => {
                 <DropdownMenu>
                   <DropdownItem header>Select a Region</DropdownItem>
                   {regions.map(x => {
-                    return region == x ? (
+                    return region === x ? (
                       <DropdownItem disabled onClick={() => setRegion(x)}>
                         {x}
                       </DropdownItem>
