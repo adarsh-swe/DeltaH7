@@ -29,7 +29,7 @@ const chart = {
         },
 
         {
-          label: 'Covid current case numbers',
+          label: 'Covid case numbers',
           borderColor: '#fc5c7d',
           backgroundColor: '#fc5c7d',
           data: theArr2,
