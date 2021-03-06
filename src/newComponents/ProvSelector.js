@@ -1,5 +1,6 @@
 import Page from 'components/Page';
-import React, { useState } from 'react';
+import React, { useState, Text } from 'react';
+import { ComposableMap } from 'react-simple-maps';
 import {
   Button,
   Card,
@@ -18,22 +19,6 @@ const colors = getThemeColors();
 
 const ProvSelector = () => {
   const [region, setRegion] = useState('CAN'); //based on code
-  const MAPPINGS = {
-    CAN: 'Canada',
-    ON: 'Ontario',
-    QC: 'Quebec',
-    NS: 'Nova Scotia',
-    NB: 'New Brunswick',
-    MB: 'Manitoba',
-    BC: 'British Columbia',
-    PE: 'Prince Edward Island',
-    SK: 'Saskatchewan',
-    AB: 'Alberta',
-    NL: 'Newfoundland',
-    NT: 'Northwest Territories',
-    YT: 'Yukon',
-    NU: 'Nunavut',
-  };
 
   const regions = [
     'CAN',
@@ -51,6 +36,7 @@ const ProvSelector = () => {
     'YT',
     'NU',
   ];
+
   return (
     <Row>
       <Col md={2}>
@@ -67,16 +53,20 @@ const ProvSelector = () => {
               <DropdownMenu>
                 <DropdownItem header>Select a Region</DropdownItem>
                 {regions.map(x => {
-                  return region === MAPPINGS.x ? (
-                    <DropdownItem disabled>{MAPPINGS.x}</DropdownItem>
+                  return region == x ? (
+                    <DropdownItem disabled onClick={() => setRegion(x)}>
+                      {x}
+                    </DropdownItem>
                   ) : (
-                    <DropdownItem>{MAPPINGS.x}</DropdownItem>
+                    <DropdownItem
+                      onClick={() => {
+                        setRegion(x);
+                      }}
+                    >
+                      {x}
+                    </DropdownItem>
                   );
                 })}
-
-                <DropdownItem disabled>canada</DropdownItem>
-                <DropdownItem>Ontario</DropdownItem>
-                <DropdownItem divider />
               </DropdownMenu>
             </UncontrolledButtonDropdown>
           </CardBody>

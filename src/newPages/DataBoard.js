@@ -13,7 +13,6 @@ const DataBoard = () => {
       <PercentBar></PercentBar>
       <ProvSelector />
       <LineGraph></LineGraph>
-      <ProvSelector />
     </Page>
   );
 };
