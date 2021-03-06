@@ -4,7 +4,7 @@ import { MdInsertChart } from 'react-icons/md';
 import React, { useEffect, text } from 'react';
 import Page from 'newComponents/Page';
 
-const test = {
+const dataJS = {
   province: 'All',
   last_updated: '2021-03-06 13:00:02',
   data: [
@@ -1376,23 +1376,34 @@ const test = {
   ],
 };
 
+const theArr = dataJS.data.map(key => {
+  return key.total_vaccinations;
+});
+
+const theArr2 = dataJS.data.map(key => {
+  return key.total_cases;
+});
+
+const theArr3 = dataJS.data.map(key => {
+  return key.date;
+});
 const chart = {
   line: {
     data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: [theArr3],
       datasets: [
         {
           label: 'Revenue for this year',
           borderColor: '#6a82fb',
           backgroundColor: '#6a82fb',
-          data: [0, 1300, 2200, 3400, 4600, 3500, 3000],
+          data: [theArr2],
         },
 
         {
           label: 'Revenue for last year',
           borderColor: '#fc5c7d',
           backgroundColor: '#fc5c7d',
-          data: [0, 1300, 2200, 3400, 4600, 3500, 3000],
+          data: [theArr],
         },
       ],
     },
