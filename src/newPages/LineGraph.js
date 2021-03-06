@@ -91,20 +91,20 @@ const LineGraph = ({ props }) => {
   const [chart, setchart] = useState({
     line: {
       data: {
-        labels: arr,
+        labels: arr3,
         datasets: [
           {
             label: 'Covid vaccines administered',
             borderColor: '#6a82fb',
             backgroundColor: '#6a82fb',
-            data: arr2,
+            data: arr,
           },
 
           {
             label: 'Covid case numbers',
             borderColor: '#fc5c7d',
             backgroundColor: '#fc5c7d',
-            data: arr3,
+            data: arr2,
           },
         ],
       },
