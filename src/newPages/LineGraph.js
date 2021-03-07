@@ -205,39 +205,7 @@ const LineGraph = ({ props }) => {
 
   return (
     <Page>
-      <Row>
-        <Col md={2}>
-          <Card>
-            <CardBody>
-              <UncontrolledButtonDropdown>
-                <DropdownToggle
-                  caret
-                  color="#236842"
-                  className="text-capitalize m-1"
-                >
-                  {region}
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem header>Select a Region</DropdownItem>
-                  {regions.map(x => {
-                    return (
-                      <DropdownItem
-                        onClick={() => {
-                          setRegion(x);
-                          console.log(region);
-                        }}
-                      >
-                        {x}
-                      </DropdownItem>
-                    );
-                  })}
-                </DropdownMenu>
-              </UncontrolledButtonDropdown>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
+      <Row className="align-items-center">
         <Col lg="8" md="12" sm="12" xs="12">
           <Card>
             <CardHeader>
@@ -257,8 +225,58 @@ const LineGraph = ({ props }) => {
             </CardBody>
           </Card>
         </Col>
+        <Col lg="4" md="12" sm="12" xs="12">
+          <Card style={{ backgroundColor: '#f8f9fa', borderColor: '#f8f9fa' }}>
+            Given the current state of the COVID-19 pandemic, the recent
+            approvals for numerous vaccines are a promising step towards
+            returning to our normal lives. However, the fast tracked research
+            and development processes for preparing this vaccine have caused
+            many people to doubt its effectiveness and are concerned about
+            potential side effects associated with it. Though this is a valid
+            concern, there are many misconceptions about the vaccine’s side
+            effects including rumours of microchips being implanted via the
+            injection, or it potentially altering your DNA. For the average
+            person, such rumours are enough to cause distrust in the available
+            vaccines and many people make judgments without taking the time to
+            fully understand the vaccine. This tool is meant for the average
+            person to understand the covid situation and the importance of the
+            vaccine in a concise manner.
+          </Card>
+          <Row>
+            <Col className="d-flex align-items-center">
+              <Card>
+                <CardBody>
+                  <UncontrolledButtonDropdown>
+                    <DropdownToggle
+                      caret
+                      color="#236842"
+                      className="text-capitalize m-1"
+                    >
+                      {region}
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem header>Select a Region</DropdownItem>
+                      {regions.map(x => {
+                        return (
+                          <DropdownItem
+                            onClick={() => {
+                              setRegion(x);
+                              console.log(region);
+                            }}
+                          >
+                            {x}
+                          </DropdownItem>
+                        );
+                      })}
+                    </DropdownMenu>
+                  </UncontrolledButtonDropdown>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Col>
       </Row>
-
+      <h4>News:</h4>
       <News news={region} />
     </Page>
   );

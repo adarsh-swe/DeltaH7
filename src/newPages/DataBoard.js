@@ -43,14 +43,8 @@ const DataBoard = () => {
   return (
     <Page className="DashboardPage" title="Dashboard">
       <PercentBar></PercentBar>
-      <Row>
-        <Col lg="8" md="12" sm="12" xs="12">
-          <LineGraph></LineGraph>
-        </Col>
-        <Col lg="4" md="12" sm="12" xs="12">
-          <TableTwo />
-        </Col>
-      </Row>
+
+      <LineGraph></LineGraph>
     </Page>
   );
 };

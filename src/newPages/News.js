@@ -8,7 +8,7 @@ const News = ({ news }) => {
   const [newsArr, setnewsArr] = useState([]);
   const newsData = () => {
     axios
-      .get('https://grg.billybishop.repl.co/api/news/' + news)
+      .get('https://deltaapi.billybishop.repl.co/api/news/' + news)
       .then(res => res.data)
       .then(json => {
         setnewsArr(json);
