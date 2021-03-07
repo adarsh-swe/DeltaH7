@@ -3,6 +3,7 @@ import Page from 'newComponents/Page';
 import LineGraph from './LineGraph';
 import PercentBar from './PercentBar';
 import News from './News';
+import TableTwo from 'newComponents/TableTwo';
 
 import {
   Button,
@@ -42,7 +43,14 @@ const DataBoard = () => {
   return (
     <Page className="DashboardPage" title="Dashboard">
       <PercentBar></PercentBar>
-      <LineGraph></LineGraph>
+      <Row>
+        <Col lg="8" md="12" sm="12" xs="12">
+          <LineGraph></LineGraph>
+        </Col>
+        <Col lg="4" md="12" sm="12" xs="12">
+          <TableTwo />
+        </Col>
+      </Row>
       <News />
     </Page>
   );
