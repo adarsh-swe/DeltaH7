@@ -9,13 +9,18 @@ import {
   DropdownToggle,
   Row,
   UncontrolledButtonDropdown,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from 'reactstrap';
 import { MdInsertChart } from 'react-icons/md';
 import React, { useEffect, text, useState } from 'react';
 import Page from 'newComponents/Page';
 import { dataJS } from 'newComponents/dataJS';
 import News from './News';
-
+import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 
 const LineGraph = ({ props }) => {
@@ -36,6 +41,7 @@ const LineGraph = ({ props }) => {
     'YT',
     'NU',
   ];
+  const [modal, setModal] = useState(false);
   const [chart, setchart] = useState({
     line: {
       data: {
@@ -97,7 +103,7 @@ const LineGraph = ({ props }) => {
       },
     },
   });
-
+  const toggle = () => setModal(!modal);
   const getData = () => {
     const query =
       region === 'CAN'
@@ -241,8 +247,17 @@ const LineGraph = ({ props }) => {
             fully understand the vaccine. This tool is meant for the average
             person to understand the covid situation and the importance of the
             vaccine in a concise manner.
+            <div
+              className="align-center"
+              style={{ marginBottom: 10, marginTop: 10 }}
+            >
+              <Button color="danger" onClick={toggle}>
+                Read More
+              </Button>
+            </div>
           </Card>
-          <Row>
+
+          <Row className="d-flex align-items-center">
             <Col className="d-flex align-items-center">
               <Card>
                 <CardBody>
@@ -278,6 +293,48 @@ const LineGraph = ({ props }) => {
       </Row>
       <h4>News:</h4>
       <News news={region} />
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Vaccine Info</ModalHeader>
+        <ModalBody className="overflow-auto">
+          <p>
+            To debunk the false rumours of microchipping and altering your DNA,
+            we first need to understand how the vaccine works. According to John
+            Hopkins Medicine faculty, The coronavirus that causes COVID-19 has
+            spikes of protein on each viral particle. These spikes help the
+            viruses attach to cells and cause disease. Some of the coronavirus
+            vaccines in development are designed to help the body “recognize”
+            these spike proteins and fight the coronavirus that has them. An
+            effective vaccine will protect a person who receives it by lowering
+            their chances of getting COVID-19 if they encounter the coronavirus.
+            Widespread vaccination for the coronavirus means that the virus will
+            not infect as many people. This will limit spread through
+            communities. As you can see, the vaccine uses a similar spike
+            protein as that of the virus to ‘train’ your immune system to combat
+            it. As of right now, the two most effective vaccines are made by
+            Moderna and Pfizer, and are around 95% effective in preventing the
+            deadly virus, NOT altering your DNA or microchipping you.
+          </p>
+          <p>
+            Another concern that is more notable is the fast-tracked production
+            of this vaccine. Given that vaccines can take around 10 years to
+            fully develop, the accelerated production of the Covid-19 vaccine
+            which was made in under a year concerns many people. However, when
+            considering the core purpose of this vaccine and the rate at which
+            the virus was spreading, the accelerated production time is
+            justified. Companies were able to develop the vaccine very quickly
+            because of the global demand for it, which provided more funding and
+            resources towards its production than a normal vaccine. Also at its
+            current state, the vaccine is intended to decrease the Covid growth
+            rate and is still being developed to improve its overall
+            effectiveness.
+          </p>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggle}>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
     </Page>
   );
 };
