@@ -109,7 +109,7 @@ const PercentBar = () => {
       <Col lg={3} md={6} sm={6} xs={12}>
         <NumberWidget
           title="Total Recoveries"
-          subtitle="Percentage of population recovered"
+          subtitle="Percentage of pop recovered"
           number={barData.totalRecoveries}
           color="secondary"
           progress={{
