@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NewsCard from './NewsCard';
-import { news } from './news-config';
+// import { news } from './news-config';
 import { Col, Row } from 'reactstrap';
+import axios from 'axios';
 
-const News = () => {
+const News = ({ news }) => {
+  const [newsArr, setnewsArr] = useState([]);
+  const newsData = () => {
+    axios
+      .get('https://grg.billybishop.repl.co/api/news/' + news)
+      .then(res => res.data)
+      .then(json => {
+        setnewsArr(json);
+      });
+  };
+
+  useEffect(() => {
+    newsData();
+  }, [news]);
+
   return (
     <>
       <Row>
-        {news.map(element => {
+        {newsArr.map(element => {
           return (
             <Col md={3} sm={3} xs={12} className="mb-3">
               <NewsCard

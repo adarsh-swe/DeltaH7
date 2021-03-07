@@ -2,7 +2,6 @@ import React, { useEffect, useState, text } from 'react';
 import Page from 'newComponents/Page';
 import LineGraph from './LineGraph';
 import PercentBar from './PercentBar';
-import News from './News';
 
 import {
   Button,
@@ -43,7 +42,6 @@ const DataBoard = () => {
     <Page className="DashboardPage" title="Dashboard">
       <PercentBar></PercentBar>
       <LineGraph></LineGraph>
-      <News />
     </Page>
   );
 };
