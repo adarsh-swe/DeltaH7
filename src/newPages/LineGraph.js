@@ -98,13 +98,14 @@ const LineGraph = ({ props }) => {
   });
 
   const getData = () => {
-    console.log(
-      'https://delta7-api.billybishop.repl.co/api/provinceHistory/' + region,
-    );
+    const query =
+      region === 'CAN'
+        ? 'https://Delta7-API.billybishop.repl.co/api/test'
+        : 'https://delta7-api.billybishop.repl.co/api/provinceHistory/' +
+          region;
+
     axios
-      .get(
-        'https://delta7-api.billybishop.repl.co/api/provinceHistory/' + region,
-      )
+      .get(query)
       .then(res => res.data)
       .then(json => {
         const theArr = json.data.map(key => {
