@@ -201,7 +201,7 @@ const LineGraph = ({ props }) => {
     // this is needed, because InfiniteCalendar forces window scroll
     window.scrollTo(0, 0);
     getData();
-  }, []);
+  }, [region]);
 
   return (
     <Page>
@@ -215,7 +215,7 @@ const LineGraph = ({ props }) => {
                   color="#236842"
                   className="text-capitalize m-1"
                 >
-                  Region
+                  {region}
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem header>Select a Region</DropdownItem>
