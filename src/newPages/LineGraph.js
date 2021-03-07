@@ -43,7 +43,7 @@ const LineGraph = ({ props }) => {
           {
             label: 'Covid vaccines administered',
             borderColor: '#6a82fb',
-            backgroundColor: '#6a82fb',
+            backgroundColor: 'rgb(106,130,251, 0.8)',
             data: [],
           },
 
@@ -58,14 +58,14 @@ const LineGraph = ({ props }) => {
       options: {
         responsive: true,
         legend: {
-          display: false,
+          display: true,
         },
         title: {
           display: false,
           text: 'Chart.js Line Chart - Stacked Area',
         },
         tooltips: {
-          intersect: false,
+          intersect: true,
           mode: 'nearest',
         },
         hover: {
@@ -74,6 +74,7 @@ const LineGraph = ({ props }) => {
         scales: {
           xAxes: [
             {
+              stacked: false,
               scaleLabel: {
                 display: false,
                 labelString: 'Date',
@@ -85,13 +86,9 @@ const LineGraph = ({ props }) => {
           ],
           yAxes: [
             {
-              stacked: true,
-              scaleLabel: {
-                display: false,
-                labelString: 'Numbers',
-              },
-              gridLines: {
-                display: false,
+              stacked: false,
+              ticks: {
+                beginAtZero: true,
               },
             },
           ],
@@ -132,9 +129,9 @@ const LineGraph = ({ props }) => {
               labels: theArr3,
               datasets: [
                 {
-                  label: 'Covid vaccines administered',
+                  label: '# of people fully vaccinated',
                   borderColor: '#6a82fb',
-                  backgroundColor: '#6a82fb',
+                  backgroundColor: 'rgb(106,130,251, 0.8)',
                   data: theArr,
                 },
 
@@ -165,6 +162,7 @@ const LineGraph = ({ props }) => {
               scales: {
                 xAxes: [
                   {
+                    stacked: false,
                     scaleLabel: {
                       display: false,
                       labelString: 'Date',
@@ -176,7 +174,7 @@ const LineGraph = ({ props }) => {
                 ],
                 yAxes: [
                   {
-                    stacked: true,
+                    stacked: false,
                     scaleLabel: {
                       display: false,
                       labelString: 'Numbers',
