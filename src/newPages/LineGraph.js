@@ -18,7 +18,7 @@ import { dataJS } from 'newComponents/dataJS';
 import axios from 'axios';
 
 const LineGraph = ({ props }) => {
-  const [region, setRegion] = useState('ON'); //based on code
+  const [region, setRegion] = useState('CAN'); //based on code
   const regions = [
     'CAN',
     'ON',
