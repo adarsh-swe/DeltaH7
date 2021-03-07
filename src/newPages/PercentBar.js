@@ -1,60 +1,84 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'reactstrap';
 import { NumberWidget } from 'components/Widget';
-import { dataJS } from 'newComponents/dataJS';
+import axios from 'axios';
 
 const PercentBar = () => {
-  const dateArr = dataJS.data.map(key => {
-    return key.date;
+  const [barData, setBarData] = useState({
+    newDate: '',
+    totalVaccinated: [],
+    percentVac: [],
+    totalCases: [],
+    percentCase: [],
+    totalFatalities: [],
+    percentFat: [],
+    totalRecoveries: [],
+    percentRec: [],
   });
+  const getData = () => {
+    console.log('https://delta7-api.billybishop.repl.co/api/test');
+    axios
+      .get('https://delta7-api.billybishop.repl.co/api/test')
+      .then(res => res.data)
+      .then(json => {
+        const date = json.data.map(key => {
+          return key.date;
+        });
 
-  const theArr = dataJS.data.map(key => {
-    return key.total_vaccinated;
-  });
+        const arr = json.data.map(key => {
+          return key.total_vaccinated;
+        });
 
-  const theArr2 = dataJS.data.map(key => {
-    return key.total_cases;
-  });
+        const arr2 = json.data.map(key => {
+          return key.total_cases;
+        });
 
-  const theArr3 = dataJS.data.map(key => {
-    return key.total_fatalities;
-  });
+        const arr3 = json.data.map(key => {
+          return key.total_fatalities;
+        });
 
-  const theArr4 = dataJS.data.map(key => {
-    return key.total_recoveries;
-  });
+        const arr4 = json.data.map(key => {
+          return key.total_recoveries;
+        });
 
-  const percentPopVac = () => {
-    const temp = theArr[theArr.length - 1];
-    return parseFloat(((temp / 37742154) * 100).toFixed(3));
+        setBarData({
+          newDate: date[date.length - 1],
+          totalVaccinated: arr[arr.length - 1],
+          percentVac: parseFloat(
+            ((arr[arr.length - 1] / 37742154) * 100).toFixed(4),
+          ),
+          totalCases: arr2[arr2.length - 1],
+          percentCase: parseFloat(
+            ((arr2[arr2.length - 1] / 37742154) * 100).toFixed(4),
+          ),
+          totalFatalities: arr3[arr3.length - 1],
+          percentFat: parseFloat(
+            ((arr3[arr3.length - 1] / 37742154) * 100).toFixed(4),
+          ),
+          totalRecoveries: arr4[arr4.length - 1],
+          percentRec: parseFloat(
+            ((arr4[arr4.length - 1] / 37742154) * 100).toFixed(4),
+          ),
+        });
+      });
   };
+  useEffect(() => {
+    // this is needed, because InfiniteCalendar forces window scroll
+    window.scrollTo(0, 0);
 
-  const percentPopInf = () => {
-    const temp2 = theArr2[theArr2.length - 1];
-    return parseFloat(((temp2 / 37742154) * 100).toFixed(3));
-  };
-
-  const percentPopFat = () => {
-    const temp2 = theArr3[theArr2.length - 1];
-    return parseFloat(((temp2 / 37742154) * 100).toFixed(4));
-  };
-
-  const percentInfRec = () => {
-    const temp2 = theArr4[theArr4.length - 1];
-    return parseFloat(((temp2 / 37742154) * 100).toFixed(4));
-  };
-  console.log(theArr);
+    getData();
+  }, []);
   return (
     <Row>
       <Col lg={3} md={6} sm={6} xs={12}>
         <NumberWidget
           title="Population Vaccinated"
-          number={theArr[theArr.length - 1]}
+          number={barData.totalVaccinated}
           subtitle="Percentage of pop vaccinated"
           color="secondary"
           progress={{
-            value: percentPopVac(),
-            label: 'As of ' + dateArr[dateArr.length - 1],
+            value: barData.percentVac,
+            label: 'As of ' + barData.newDate,
           }}
         />
       </Col>
@@ -62,11 +86,11 @@ const PercentBar = () => {
         <NumberWidget
           title="Total cumulative infected"
           subtitle="Percentage of pop infected"
-          number={theArr2[theArr.length - 1]}
+          number={barData.totalCases}
           color="secondary"
           progress={{
-            value: percentPopInf(),
-            label: 'As of ' + dateArr[dateArr.length - 1],
+            value: barData.percentCase,
+            label: 'As of ' + barData.newDate,
           }}
         />
       </Col>
@@ -74,11 +98,11 @@ const PercentBar = () => {
         <NumberWidget
           title="Total Covid Fatalities"
           subtitle="Percentage of pop fatalities"
-          number={theArr3[theArr.length - 1]}
+          number={barData.totalFatalities}
           color="secondary"
           progress={{
-            value: percentPopFat(),
-            label: 'As of ' + dateArr[dateArr.length - 1],
+            value: barData.percentFat,
+            label: 'As of ' + barData.newDate,
           }}
         />
       </Col>
@@ -86,11 +110,11 @@ const PercentBar = () => {
         <NumberWidget
           title="Total Recoveries"
           subtitle="Percentage of population recovered"
-          number={theArr4[theArr.length - 1]}
+          number={barData.totalRecoveries}
           color="secondary"
           progress={{
-            value: percentInfRec(),
-            label: 'As of ' + dateArr[dateArr.length - 1],
+            value: barData.percentRec,
+            label: 'As of ' + barData.newDate,
           }}
         />
       </Col>

@@ -83,11 +83,14 @@ class Header extends React.Component {
       <Navbar light expand className={bem.b('bg-white')}>
         <Nav navbar className="mr-2"></Nav>
         <Nav navbar>
-          <Card style={{ borderColor: 'white' }}> Covid stats</Card>
+          <Card style={{ borderColor: 'white' }}>
+            {' '}
+            Covid-19 data for Canada and Canadian provinces
+          </Card>
         </Nav>
 
         <Nav navbar className={bem.e('nav-right')}>
-          <Card style={{ borderColor: 'white' }}> Logo?</Card>
+          <Card style={{ borderColor: 'white' }}>🍁</Card>
         </Nav>
       </Navbar>
     );
