@@ -14,6 +14,7 @@ import { MdInsertChart } from 'react-icons/md';
 import React, { useEffect, text, useState } from 'react';
 import Page from 'newComponents/Page';
 import { dataJS } from 'newComponents/dataJS';
+import News from './News';
 
 import axios from 'axios';
 
@@ -199,9 +200,8 @@ const LineGraph = ({ props }) => {
   useEffect(() => {
     // this is needed, because InfiniteCalendar forces window scroll
     window.scrollTo(0, 0);
-
     getData();
-  }, [region]);
+  }, []);
 
   return (
     <Page>
@@ -258,6 +258,8 @@ const LineGraph = ({ props }) => {
           </Card>
         </Col>
       </Row>
+
+      <News news={region} />
     </Page>
   );
 };

@@ -2,8 +2,11 @@ import React, { useEffect, useState, text } from 'react';
 import Page from 'newComponents/Page';
 import LineGraph from './LineGraph';
 import PercentBar from './PercentBar';
+<<<<<<< HEAD
 import News from './News';
 import TableTwo from 'newComponents/TableTwo';
+=======
+>>>>>>> 5ec032b614a1479c4b63faa4a506b02f6730655b
 
 import {
   Button,
@@ -51,7 +54,6 @@ const DataBoard = () => {
           <TableTwo />
         </Col>
       </Row>
-      <News />
     </Page>
   );
 };
