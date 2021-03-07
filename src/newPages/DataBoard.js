@@ -41,7 +41,7 @@ const DataBoard = () => {
     window.scrollTo(0, 0);
   });
   return (
-    <Page className="DashboardPage" title="Dashboard">
+    <Page className="DashboardPage" title="Covid Tracker">
       <PercentBar></PercentBar>
 
       <LineGraph></LineGraph>
