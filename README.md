@@ -12,3 +12,6 @@
 
 ## Check out our back-end : 
 https://repl.it/@BillyBishop/deltaAPI
+
+##Check out our devpost for more info:
+https://devpost.com/software/still-thinkin-bout-it
